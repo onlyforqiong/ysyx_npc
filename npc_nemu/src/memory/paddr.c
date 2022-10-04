@@ -2,6 +2,9 @@
 #include <memory/paddr.h>
 #include <device/mmio.h>
 #include <isa.h>
+#include <verilator_use.h>
+
+
 
 #if   defined(CONFIG_PMEM_MALLOC)
 static uint8_t *pmem = NULL;
@@ -153,3 +156,28 @@ void paddr_write(paddr_t addr, int len, word_t data) {
   IFDEF(CONFIG_DEVICE, mmio_write(addr, len, data); return);
   out_of_bound(addr);
 }
+
+void mem_trace_func(size_t mem_write_state,size_t addr,size_t data,size_t pc ,size_t size){
+   #ifdef CONFIG_ITRACE_COND
+  int mem_write_state_int = *(bool*)mem_write_state;
+  mtrace_type mem_read_mtrace = {};
+  mem_read_mtrace.type = mem_write_state_int + 1;
+  switch(*(size_t *)size) {
+    case 0 :   mem_read_mtrace.len = 1;break;
+    case 1 :   mem_read_mtrace.len = 2;break;
+    case 2 :   mem_read_mtrace.len = 4;break;
+    case 3 :   mem_read_mtrace.len = 8;break;
+    default :  mem_read_mtrace.len = 0 ;break;
+    
+  }
+
+  mem_read_mtrace.paddr = *(size_t *)addr;     
+  mem_read_mtrace.pc = *(size_t *)pc;
+  mem_read_mtrace.data = *(size_t *)data;
+  
+  mtrace_loop_push(mtrace_loop,mem_read_mtrace,&mtrace_loop_index);
+  #endif
+}
+void mtrace_printf() {
+  mtrace_loop_print(mtrace_loop,mtrace_loop_index);
+} 

@@ -3,8 +3,9 @@
 #include <cpu/ifetch.h>
 #include <cpu/decode.h>
 #include <elf_read.h>
-#include <verilator_use.h>
 #include <axi.h>
+#include <verilator_use.h>
+
 
 #define R(i) gpr(i)
 #define Mr vaddr_read
@@ -22,43 +23,52 @@ enum {
 #define destR(n) do { *dest = n; } while (0)
 #define src1I(i) do { *src1 = i; } while (0)
 #define src2I(i) do { *src2 = i; } while (0)
-#define destI(i) do { *dest = i; } while (0)
+#define destI(i) do { *dest = i; } while (0).
 
+size_t *cpu_gpr = NULL;
+size_t debug_pc = 0;
+int cpu_commited = 1;
+void cpu_commited_func(void){
+  cpu_commited = 0;
+}
 
+void set_gpr_ptr(const svOpenArrayHandle r){
+  cpu_gpr = (size_t *)(((VerilatedDpiOpenVar*)r)->datap());
+}
 
-static word_t immu_jal(uint32_t i) {return SEXT(BITS(i,31-12,31-12),1)<<20 | BITS(i,30-12,21-12)<<1 | BITS(i,20-12,20-12)<<11 | BITS(i,19-12,12-12) <<12;}
-static word_t immI(uint32_t i) { return SEXT(BITS(i, 31, 20), 12); }
-static word_t immU(uint32_t i) {return SEXT(BITS(i, 31, 12), 20) << 12; } // u 和 i加起来正好就是32位，可以随便跳转了
-static word_t immS(uint32_t i) { return (SEXT(BITS(i, 31, 25), 7) << 5) | BITS(i, 11, 7); }
-static word_t immSB(uint32_t i) { return (SEXT(BITS(i,31,31),1)<<12) | BITS(i,7,7)<<11 | BITS(i,11,8)<<1 | BITS(i,30,25)<<5 ;}
+void set_pc_ptr(size_t r){
+  debug_pc = *(size_t*)r;
+}
 
-static void decode_operand(Decode *s, word_t *dest, word_t *src1, word_t *src2, int type) {
-  uint32_t i = s->isa.inst.val;
-  int rd  = BITS(i, 11, 7);
-  int rs1 = BITS(i, 19, 15);
-  int rs2 = BITS(i, 24, 20);
-  destR(rd);
-  switch (type) {
-    case TYPE_I:  src1R(rs1);    src2I(immI(i)); break;
-    case TYPE_U:  src1I(immU(i)); break;
-    case TYPE_S:  destI(immS(i)); src1R(rs1); src2R(rs2); break;
-    case TYPE_SB: destI(immSB(i));src1R(rs1); src2R(rs2); break;
-    case TYPE_RR:  src1R(rs1); src2R(rs2); break;
-  }
+void cpu_ebreak(){
+   NEMUTRAP(debug_pc, 0);
 }
 
 
 static int decode_exec(Decode *s) {
-  word_t dest = 0, src1 = 0, src2 = 0;
+  // printf("sbsbssbs\n");
   s->dnpc = s->snpc;
-  while(cpu_commit) {
-    
+  int counter = 0;
+  // printf("cpu_commited = %d\n",cpu_commited);
+  while(cpu_commited == 1) {
+    // printf("counter = %d\n",counter);
+    AXI_ResponseHandler_Inst(&axi_inst_singal);
+    AXI_ResponseHandler_Data(&axi_data_singal);
     single_cycle();
+    counter++;
+    //不可能连续10000个周期还不能够有指令commit，除非已经挂逼了
+    if(counter >= 1000) {
 
-    
+      sim_end();
+      assert(0);
+    }
+
   }
-
+  memcpy(cpu.gpr,cpu_gpr,sizeof(word_t) * 32);
+  printf("debug pc = %lx\n",debug_pc);
   
+  cpu.pc = debug_pc;
+  cpu_commited = 1;
   return 0;
 }
 

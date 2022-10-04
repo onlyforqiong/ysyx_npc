@@ -9,10 +9,14 @@
 #define VERILATED_VMYCPU_TOP_H_  // guard
 
 #include "verilated.h"
+#include "svdpi.h"
 
 class Vmycpu_top__Syms;
 class Vmycpu_top___024root;
 class VerilatedVcdC;
+class Vmycpu_top_mycpu_top;
+class Vmycpu_top___024unit;
+
 
 // This class is the main interface to the Verilated model
 class Vmycpu_top VL_NOT_FINAL : public VerilatedModel {
@@ -25,11 +29,11 @@ class Vmycpu_top VL_NOT_FINAL : public VerilatedModel {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_IN8(&aclk,0,0);
     VL_IN8(&aresetn,0,0);
+    VL_IN8(&aclk,0,0);
     VL_IN8(&ext_int,5,0);
     VL_OUT8(&axi_mem_port_0_arid,3,0);
-    VL_OUT8(&axi_mem_port_0_arlen,3,0); 
+    VL_OUT8(&axi_mem_port_0_arlen,3,0);
     VL_OUT8(&axi_mem_port_0_arsize,2,0);
     VL_OUT8(&axi_mem_port_0_arburst,1,0);
     VL_OUT8(&axi_mem_port_0_arlock,1,0);
@@ -94,20 +98,22 @@ class Vmycpu_top VL_NOT_FINAL : public VerilatedModel {
     VL_OUT8(&axi_mem_port_1_bready,0,0);
     VL_OUT8(&debug_wb_rf_wen,3,0);
     VL_OUT8(&debug_wb_rf_wnum,4,0);
-    VL_OUT(&axi_mem_port_0_araddr,31,0);
-    VL_IN(&axi_mem_port_0_rdata,31,0);
-    VL_OUT(&axi_mem_port_0_awaddr,31,0);
-    VL_OUT(&axi_mem_port_0_wdata,31,0);
-    VL_OUT(&axi_mem_port_1_araddr,31,0);
-    VL_IN(&axi_mem_port_1_rdata,31,0);
-    VL_OUT(&axi_mem_port_1_awaddr,31,0);
-    VL_OUT(&axi_mem_port_1_wdata,31,0);
     VL_OUT(&debug_wb_pc,31,0);
     VL_OUT(&debug_wb_rf_wdata,31,0);
+    VL_OUT64(&axi_mem_port_0_araddr,63,0);
+    VL_IN64(&axi_mem_port_0_rdata,63,0);
+    VL_OUT64(&axi_mem_port_0_awaddr,63,0);
+    VL_OUT64(&axi_mem_port_0_wdata,63,0);
+    VL_OUT64(&axi_mem_port_1_araddr,63,0);
+    VL_IN64(&axi_mem_port_1_rdata,63,0);
+    VL_OUT64(&axi_mem_port_1_awaddr,63,0);
+    VL_OUT64(&axi_mem_port_1_wdata,63,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
+    Vmycpu_top_mycpu_top* const __PVT__mycpu_top;
+    Vmycpu_top___024unit* const __PVT____024unit;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.

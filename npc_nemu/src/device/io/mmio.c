@@ -1,4 +1,5 @@
 #include <device/map.h>
+#include <cpu/difftest.h>
 
 #define NR_MAP 16
 

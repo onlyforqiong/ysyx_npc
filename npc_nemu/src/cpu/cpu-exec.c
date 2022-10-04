@@ -2,6 +2,11 @@
 #include <cpu/decode.h>
 #include <cpu/difftest.h>
 #include <locale.h>
+#include <disass.h>
+#include <verilator_use.h>
+#include <memory/paddr.h>
+
+
 
 #include </home/ddddddd/SynologyDrive/ysyx/ysyx-workbench/nemu/src/monitor/sdb/sdb.h>
 #include <elf_read.h>
@@ -65,6 +70,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
       printf("cal wrong\n");
     }
     if (answer != p->last_value) {
+      sim_end();
       Log("%s is different after executing instruction at pc = " FMT_WORD ", dnpc = "
       FMT_WORD  ", last = " FMT_WORD ", now = " FMT_WORD ,
         p->str, _this->pc,dnpc,  p->last_value, answer ); 
@@ -76,14 +82,13 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 }
 
 
-
 static void exec_once(Decode *s, vaddr_t pc) {
   s->pc = pc;
   s->snpc = pc;
   isa_exec_once(s);
   // printf("inst ->  %08x __ pc ->  %016lx\n",s->isa.inst.val,s->pc);
   
-  cpu.pc = s->dnpc;
+
 
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
@@ -102,7 +107,6 @@ static void exec_once(Decode *s, vaddr_t pc) {
   p += space_len;
 
 
-  void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p,
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.inst.val, ilen);
   itrace_loop_push(itrace_loop,*s,&itrace_loop_index);
@@ -134,11 +138,13 @@ static void statistic() {
     #ifdef CONFIG_ITRACE_COND
       itrace_loop_print(itrace_loop,itrace_loop_index); 
       ftrace_loop_print(ftrace_loop,ftrace_loop_index);
+      mtrace_printf();
 
     #endif
 
    
  } 
+ sim_end();
   IFNDEF(CONFIG_TARGET_AM, setlocale(LC_NUMERIC, ""));
 #define NUMBERIC_FMT MUXDEF(CONFIG_TARGET_AM, "%ld", "%'ld")
   Log("host time spent = " NUMBERIC_FMT " us", g_timer);
@@ -153,6 +159,7 @@ void assert_fail_msg() {
   #ifdef CONFIG_ITRACE_COND
     itrace_loop_print(itrace_loop,itrace_loop_index);
     ftrace_loop_print(ftrace_loop,ftrace_loop_index);
+    mtrace_printf();
   #endif
   
   
@@ -180,6 +187,9 @@ void cpu_exec(uint64_t n) {
     case NEMU_RUNNING: nemu_state.state = NEMU_STOP; break;
 
     case NEMU_END: case NEMU_ABORT:
+      itrace_loop_print(itrace_loop,itrace_loop_index);
+      ftrace_loop_print(ftrace_loop,ftrace_loop_index);
+      mtrace_printf();
       Log("nemu: %s at pc = " FMT_WORD,
           (nemu_state.state == NEMU_ABORT ? ASNI_FMT("ABORT", ASNI_FG_RED) :
            (nemu_state.halt_ret == 0 ? ASNI_FMT("HIT GOOD TRAP", ASNI_FG_GREEN) :

@@ -1,7 +1,7 @@
 COLOR_RED := $(shell echo "\033[1;31m")
 COLOR_END := $(shell echo "\033[0m")
 
-ifeq ($(wildcard .config),)
+ifeq ($(wildcard $(NPC_NEMU_HOME)/.config),)
 $(warning $(COLOR_RED)Warning: .config does not exists!$(COLOR_END))
 $(warning $(COLOR_RED)To build the project, first run 'make menuconfig'.$(COLOR_END))
 endif
@@ -10,7 +10,7 @@ Q            := @
 KCONFIG_PATH := $(NPC_NEMU_HOME)/tools/kconfig
 FIXDEP_PATH  := $(NPC_NEMU_HOME)/tools/fixdep
 Kconfig      := $(NPC_NEMU_HOME)/Kconfig
-rm-distclean += include/generated include/config .config .config.old
+# rm-distclean += include/generated include/config .config .config.old
 silent := -s
 
 CONF   := $(KCONFIG_PATH)/build/conf

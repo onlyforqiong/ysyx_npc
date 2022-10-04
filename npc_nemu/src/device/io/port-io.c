@@ -1,4 +1,5 @@
 #include <device/map.h>
+#include <cpu/difftest.h>
 
 #define PORT_IO_SPACE_MAX 65535
 

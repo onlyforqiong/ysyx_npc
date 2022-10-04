@@ -3,6 +3,10 @@
 
 #include <common.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define RESET_VECTOR (CONFIG_MBASE + CONFIG_PC_RESET_OFFSET)
 
 #define mem_inst_fec 1
@@ -20,5 +24,9 @@ static inline bool in_pmem(paddr_t addr) {
 
 word_t paddr_read(paddr_t addr, int len ,uint8_t mem_type);
 void paddr_write(paddr_t addr, int len, word_t data);
+void mtrace_printf();
 
+#ifdef __cplusplus
+}
+#endif
 #endif

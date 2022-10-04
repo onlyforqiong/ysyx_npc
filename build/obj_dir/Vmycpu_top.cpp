@@ -4,6 +4,7 @@
 #include "Vmycpu_top.h"
 #include "Vmycpu_top__Syms.h"
 #include "verilated_vcd_c.h"
+#include "verilated_dpi.h"
 
 //============================================================
 // Constructors
@@ -11,8 +12,8 @@
 Vmycpu_top::Vmycpu_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     : VerilatedModel{*_vcontextp__}
     , vlSymsp{new Vmycpu_top__Syms(contextp(), _vcname__, this)}
-    , aclk{vlSymsp->TOP.aclk}
     , aresetn{vlSymsp->TOP.aresetn}
+    , aclk{vlSymsp->TOP.aclk}
     , ext_int{vlSymsp->TOP.ext_int}
     , axi_mem_port_0_arid{vlSymsp->TOP.axi_mem_port_0_arid}
     , axi_mem_port_0_arlen{vlSymsp->TOP.axi_mem_port_0_arlen}
@@ -80,6 +81,8 @@ Vmycpu_top::Vmycpu_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     , axi_mem_port_1_bready{vlSymsp->TOP.axi_mem_port_1_bready}
     , debug_wb_rf_wen{vlSymsp->TOP.debug_wb_rf_wen}
     , debug_wb_rf_wnum{vlSymsp->TOP.debug_wb_rf_wnum}
+    , debug_wb_pc{vlSymsp->TOP.debug_wb_pc}
+    , debug_wb_rf_wdata{vlSymsp->TOP.debug_wb_rf_wdata}
     , axi_mem_port_0_araddr{vlSymsp->TOP.axi_mem_port_0_araddr}
     , axi_mem_port_0_rdata{vlSymsp->TOP.axi_mem_port_0_rdata}
     , axi_mem_port_0_awaddr{vlSymsp->TOP.axi_mem_port_0_awaddr}
@@ -88,8 +91,8 @@ Vmycpu_top::Vmycpu_top(VerilatedContext* _vcontextp__, const char* _vcname__)
     , axi_mem_port_1_rdata{vlSymsp->TOP.axi_mem_port_1_rdata}
     , axi_mem_port_1_awaddr{vlSymsp->TOP.axi_mem_port_1_awaddr}
     , axi_mem_port_1_wdata{vlSymsp->TOP.axi_mem_port_1_wdata}
-    , debug_wb_pc{vlSymsp->TOP.debug_wb_pc}
-    , debug_wb_rf_wdata{vlSymsp->TOP.debug_wb_rf_wdata}
+    , __PVT__mycpu_top{vlSymsp->TOP.__PVT__mycpu_top}
+    , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
@@ -138,7 +141,7 @@ static void _eval_initial_loop(Vmycpu_top__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = Vmycpu_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/ddddddd/SynologyDrive/ysyx/ysyx-workbench/npc/vsrc/riscv64_ysyx/mycpu_top.v", 61174, "",
+            VL_FATAL_MT("/home/ddddddd/SynologyDrive/ysyx/ysyx-workbench/npc/vsrc/riscv64_ysyx/mycpu_top.v", 64734, "",
                 "Verilated model didn't DC converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
@@ -169,7 +172,7 @@ void Vmycpu_top::eval_step() {
             Verilated::debug(1);
             __Vchange = Vmycpu_top___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/ddddddd/SynologyDrive/ysyx/ysyx-workbench/npc/vsrc/riscv64_ysyx/mycpu_top.v", 61174, "",
+            VL_FATAL_MT("/home/ddddddd/SynologyDrive/ysyx/ysyx-workbench/npc/vsrc/riscv64_ysyx/mycpu_top.v", 64734, "",
                 "Verilated model didn't converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {

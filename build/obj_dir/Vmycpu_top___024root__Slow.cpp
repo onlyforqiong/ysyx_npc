@@ -3,6 +3,7 @@
 // See Vmycpu_top.h for the primary calling header
 
 #include "verilated.h"
+#include "verilated_dpi.h"
 
 #include "Vmycpu_top__Syms.h"
 #include "Vmycpu_top___024root.h"

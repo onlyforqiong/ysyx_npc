@@ -2,7 +2,7 @@
 #include <cpu/cpu.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "sdb.h"
+#include <cpu/sdb.h>
 #include "memory/vaddr.h"
 
 static int is_batch_mode = false;
@@ -73,7 +73,7 @@ static struct {
   const char * description;
   void (*handler) (char *); 
 }info_table [] = {
-  {"r","Display the register of cpu",isa_reg_display},
+  {"r","Display the register of cpu", (void (*)(char*))isa_reg_display},
   {"w","Display the watch point of the debugger",display_watch_point},
 };
 

@@ -5,9 +5,9 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include<Vmycpu_top.h>
-#include<verilated.h>
-#include<verilated_vcd_c.h>
+// #include<Vmycpu_top.h>
+// #include<verilated.h>
+// #include<verilated_vcd_c.h>
 
 #include <generated/autoconf.h>
 #include <macro.h>
@@ -26,7 +26,6 @@ void printf_kongge(int num);
 typedef MUXDEF(CONFIG_ISA64, uint64_t, uint32_t) word_t;
 typedef MUXDEF(CONFIG_ISA64, int64_t, int32_t)  sword_t;
 #define FMT_WORD MUXDEF(CONFIG_ISA64, "0x%016lx", "0x%08x")
-#define Vtop Vmycpu_top
 
 
 

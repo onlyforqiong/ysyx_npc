@@ -1,6 +1,7 @@
 #include <isa.h>
 #include <memory/paddr.h>
 #include <elf_read.h>
+#include <disass.h>
 
 void init_rand();
 void init_log(const char *log_file);
@@ -8,7 +9,7 @@ void init_mem();
 void init_difftest(char *ref_so_file, long img_size, int port);
 void init_device();
 void init_sdb();
-void init_disasm(const char *triple);
+
 
 void printf_kongge(int num) {
   for(int i = 0;i<num;i++) {
@@ -178,8 +179,8 @@ static void load_elf() {
 
     int answer = fread(&elf_header,sizeof(elf_header),1,fp); 
 
-    elf_program_header = malloc(elf_header.e_phnum * elf_header.e_phentsize);
-    elf_section_header = malloc(elf_header.e_shnum * elf_header.e_shentsize);
+    elf_program_header = ( Elf64_Phdr * )malloc(elf_header.e_phnum * elf_header.e_phentsize);
+    elf_section_header = (Elf64_Shdr *) malloc(elf_header.e_shnum * elf_header.e_shentsize);
 
     answer = fseek(fp,elf_header.e_phoff,SEEK_SET);
 
@@ -201,11 +202,11 @@ static void load_elf() {
         answer = fseek(fp,elf_section_header[i].sh_offset,SEEK_SET);
       
         if(i != elf_header.e_shstrndx) {
-          elf_string_table = malloc(sizeof(char) * elf_section_header[i].sh_size);
+          elf_string_table = ( char  *)malloc(sizeof(char) * elf_section_header[i].sh_size);
           answer = fread(elf_string_table,sizeof(char) * elf_section_header[i].sh_size ,1,fp); 
          
         }else if(i == elf_header.e_shstrndx) {
-          elf_sec_name_table = malloc(sizeof(char) * elf_section_header[i].sh_size);
+          elf_sec_name_table =  (char  *)malloc(sizeof(char) * elf_section_header[i].sh_size);
           answer = fread(elf_sec_name_table,sizeof(char) * elf_section_header[i].sh_size ,1,fp); 
         }
           
@@ -213,7 +214,7 @@ static void load_elf() {
         // symble_table_index = i;
         // printf("index = %d\n",symble_table_index);
         sec_entry_num =  elf_section_header[i].sh_entsize;
-        elf_symbol_table = malloc(sizeof(Elf64_Sym)* elf_section_header[i].sh_entsize);
+        elf_symbol_table =  (Elf64_Sym  * )malloc(sizeof(Elf64_Sym)* elf_section_header[i].sh_entsize);
 
         answer = fseek(fp,elf_section_header[i].sh_offset,SEEK_SET);
         answer = fread(elf_symbol_table,sizeof(Elf64_Sym) * elf_section_header[i].sh_entsize,1,fp); 
