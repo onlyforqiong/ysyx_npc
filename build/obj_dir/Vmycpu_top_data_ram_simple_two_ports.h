@@ -6,6 +6,7 @@
 #define VERILATED_VMYCPU_TOP_DATA_RAM_SIMPLE_TWO_PORTS_H_  // guard
 
 #include "verilated.h"
+#include "verilated_threads.h"
 
 class Vmycpu_top__Syms;
 class Vmycpu_top_Look_up_table_read_first_;
@@ -17,20 +18,20 @@ class Vmycpu_top_data_ram_simple_two_ports final : public VerilatedModule {
     Vmycpu_top_Look_up_table_read_first_* __PVT__Look_up_table_read_first_;
 
     // DESIGN SPECIFIC STATE
-    VL_IN8(__PVT__clock,0,0);
-    VL_IN8(__PVT__reset,0,0);
-    VL_IN8(__PVT__io_wea,0,0);
     VL_IN8(__PVT__io_addra,4,0);
-    VL_IN8(__PVT__io_dina,7,0);
-    VL_IN8(__PVT__io_addrb,4,0);
-    VL_OUT8(__PVT__io_doutb,7,0);
-    CData/*0:0*/ __PVT__Look_up_table_read_first___05Fclock;
-    CData/*0:0*/ __PVT__Look_up_table_read_first___05Freset;
     CData/*4:0*/ __PVT__Look_up_table_read_first___05Fio_ar_addr;
+    VL_IN8(__PVT__clock,0,0);
+    CData/*0:0*/ __PVT__Look_up_table_read_first___05Fclock;
+    VL_IN8(__PVT__io_addrb,4,0);
     CData/*4:0*/ __PVT__Look_up_table_read_first___05Fio_aw_addr;
+    VL_IN8(__PVT__io_wea,0,0);
     CData/*0:0*/ __PVT__Look_up_table_read_first___05Fio_write;
-    CData/*7:0*/ __PVT__Look_up_table_read_first___05Fio_in;
+    VL_OUT8(__PVT__io_doutb,7,0);
     CData/*7:0*/ __PVT__Look_up_table_read_first___05Fio_out;
+    VL_IN8(__PVT__reset,0,0);
+    CData/*0:0*/ __PVT__Look_up_table_read_first___05Freset;
+    VL_IN8(__PVT__io_dina,7,0);
+    CData/*7:0*/ __PVT__Look_up_table_read_first___05Fio_in;
 
     // INTERNAL VARIABLES
     Vmycpu_top__Syms* const vlSymsp;

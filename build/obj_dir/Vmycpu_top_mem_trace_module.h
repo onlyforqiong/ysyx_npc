@@ -6,6 +6,7 @@
 #define VERILATED_VMYCPU_TOP_MEM_TRACE_MODULE_H_  // guard
 
 #include "verilated.h"
+#include "verilated_threads.h"
 
 class Vmycpu_top__Syms;
 

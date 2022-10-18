@@ -38,7 +38,7 @@
 #include "Vmycpu_top_BHT_banks_oneissue.h"
 #include "Vmycpu_top_BTB_banks_oneissue_with_block_ram.h"
 #include "Vmycpu_top_data_ram_one_port_with_latency.h"
-#include "Vmycpu_top_data_ram_one_port.h"
+#include "Vmycpu_top_data_ram_one_port_with_latency_16.h"
 #include "Vmycpu_top_PHTS_with_block_ram.h"
 #include "Vmycpu_top_BHT.h"
 #include "Vmycpu_top_btb_tag_with_block_ram.h"
@@ -61,6 +61,7 @@ Vmycpu_top__Syms::Vmycpu_top__Syms(VerilatedContext* contextp, const char* namep
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
+    , __Vm_threadPoolp{static_cast<VlThreadPool*>(contextp->threadPoolp())}
     // Setup module instances
     , TOP{this, namep}
     , TOP____024unit{this, Verilated::catName(namep, "$unit")}

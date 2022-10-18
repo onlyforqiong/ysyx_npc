@@ -17,6 +17,13 @@ VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__i
     vlSelf->__PVT__io_out_hashcode = vlSelf->__PVT__hashcode_value;
     vlSelf->__PVT__io_out_lookup_data = vlSelf->__PVT__lookup_data_value;
     vlSelf->__PVT__io_out_pht_lookup_value = vlSelf->__PVT__pht_lookup_value_data;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__id_bru_state__1(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__id_bru_state__1\n"); );
+    // Body
     vlSelf->__PVT__io_out_target_pc = vlSelf->__PVT__target_pc_value;
 }
 
@@ -27,9 +34,37 @@ VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__e
     // Body
     vlSelf->__PVT__io_out_hashcode = vlSelf->__PVT__hashcode_value;
     vlSelf->__PVT__io_out_target_pc = vlSelf->__PVT__target_pc_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__1(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__1\n"); );
+    // Body
     vlSelf->__PVT__io_out_bht = vlSelf->__PVT__bht_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__2(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__2\n"); );
+    // Body
     vlSelf->__PVT__io_out_lookup_data = vlSelf->__PVT__lookup_data_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__3(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__3\n"); );
+    // Body
     vlSelf->__PVT__io_out_pht_lookup_value = vlSelf->__PVT__pht_lookup_value_data;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__4(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__ex_bru_state__4\n"); );
+    // Body
     vlSelf->__PVT__io_out_pht = vlSelf->__PVT__pht_value;
 }
 
@@ -65,10 +100,38 @@ VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__w
     VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__0\n"); );
     // Body
     vlSelf->__PVT__io_out_pht = vlSelf->__PVT__pht_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__1(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__1\n"); );
+    // Body
     vlSelf->__PVT__io_out_bht = vlSelf->__PVT__bht_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__2(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__2\n"); );
+    // Body
     vlSelf->__PVT__io_out_target_pc = vlSelf->__PVT__target_pc_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__3(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__3\n"); );
+    // Body
     vlSelf->__PVT__io_out_pht_lookup_value = vlSelf->__PVT__pht_lookup_value_data;
     vlSelf->__PVT__io_out_hashcode = vlSelf->__PVT__hashcode_value;
+}
+
+VL_ATTR_COLD void Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__4(Vmycpu_top_bru_detail* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+          Vmycpu_top_bru_detail___settle__TOP__mycpu_top__u_riscv_cpu__wb_bru_state__4\n"); );
+    // Body
     vlSelf->__PVT__io_out_lookup_data = vlSelf->__PVT__lookup_data_value;
 }
 

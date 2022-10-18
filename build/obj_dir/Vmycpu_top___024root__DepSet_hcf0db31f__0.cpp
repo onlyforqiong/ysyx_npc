@@ -7,6 +7,18 @@
 
 #include "Vmycpu_top___024root.h"
 
+void Vmycpu_top___024root___eval__0(Vmycpu_top___024root* vlSelf);
+void Vmycpu_top___024root___eval__1(Vmycpu_top___024root* vlSelf);
+
+void Vmycpu_top___024root___eval(Vmycpu_top___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vmycpu_top__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmycpu_top___024root___eval\n"); );
+    // Body
+    Vmycpu_top___024root___eval__0(vlSelf);
+    Vmycpu_top___024root___eval__1(vlSelf);
+}
+
 QData Vmycpu_top___024root___change_request_1(Vmycpu_top___024root* vlSelf);
 
 VL_INLINE_OPT QData Vmycpu_top___024root___change_request(Vmycpu_top___024root* vlSelf) {

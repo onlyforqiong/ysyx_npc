@@ -6,6 +6,7 @@
 #define VERILATED_VMYCPU_TOP_BR_H_  // guard
 
 #include "verilated.h"
+#include "verilated_threads.h"
 
 class Vmycpu_top__Syms;
 
@@ -14,7 +15,6 @@ class Vmycpu_top_br final : public VerilatedModule {
 
     // DESIGN SPECIFIC STATE
     VL_IN8(__PVT__reset,0,0);
-    VL_IN8(__PVT__io_branch,5,0);
     VL_OUT8(__PVT__io_exe,0,0);
     CData/*0:0*/ __PVT___result_T;
     CData/*0:0*/ __PVT___result_T_1;
@@ -26,6 +26,7 @@ class Vmycpu_top_br final : public VerilatedModule {
     CData/*5:0*/ __PVT___io_exe_T_4;
     VL_IN64(__PVT__io_r1,63,0);
     VL_IN64(__PVT__io_r2,63,0);
+    VL_IN8(__PVT__io_branch,5,0);
 
     // INTERNAL VARIABLES
     Vmycpu_top__Syms* const vlSymsp;

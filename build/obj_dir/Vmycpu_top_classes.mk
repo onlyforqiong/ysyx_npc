@@ -12,74 +12,104 @@ VM_COVERAGE = 0
 # Parallel builds?  0/1 (from --output-split)
 VM_PARALLEL_BUILDS = 1
 # Threaded output mode?  0/1/N threads (from --threads)
-VM_THREADS = 0
+VM_THREADS = 10
 # Tracing output mode?  0/1 (from --trace/--trace-fst)
 VM_TRACE = 1
 # Tracing output mode in VCD format?  0/1 (from --trace)
-VM_TRACE_VCD = 1
+VM_TRACE_VCD = 0
 # Tracing output mode in FST format?  0/1 (from --trace-fst)
-VM_TRACE_FST = 0
+VM_TRACE_FST = 1
 
 ### Object file lists...
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
 	Vmycpu_top \
 	Vmycpu_top___024root__DepSet_h368ace38__0 \
+	Vmycpu_top___024root__DepSet_h368ace38__1 \
+	Vmycpu_top___024root__DepSet_h368ace38__2 \
 	Vmycpu_top___024root__DepSet_hcf0db31f__0 \
 	Vmycpu_top_mycpu_top__DepSet_heb4658b1__0 \
+	Vmycpu_top_mycpu_top__DepSet_h02412096__0 \
 	Vmycpu_top_myCPU__DepSet_hbd5afe9b__0 \
+	Vmycpu_top_myCPU__DepSet_hbd5afe9b__1 \
 	Vmycpu_top_myCPU__DepSet_h583d82bc__0 \
 	Vmycpu_top_inst_cache__DepSet_h52ce030f__0 \
+	Vmycpu_top_inst_cache__DepSet_h52ce030f__1 \
+	Vmycpu_top_inst_cache__DepSet_h52ce030f__2 \
 	Vmycpu_top_inst_cache__DepSet_h6ac96850__0 \
 	Vmycpu_top_data_cache__DepSet_ha261f6c4__0 \
+	Vmycpu_top_data_cache__DepSet_ha261f6c4__1 \
 	Vmycpu_top_data_cache__DepSet_h3b627b0b__0 \
+	Vmycpu_top_data_cache__DepSet_h3b627b0b__1 \
 	Vmycpu_top___024unit__DepSet_hc8c96b27__0 \
-	Vmycpu_top_alu__DepSet_h1a0da638__0 \
-	Vmycpu_top_br__DepSet_he1bc4075__0 \
-	Vmycpu_top_cfu__DepSet_h132bf934__0 \
+	Vmycpu_top_cp0__DepSet_hc6b9262a__0 \
 	Vmycpu_top_cp0__DepSet_hdf1a4b2d__0 \
+	Vmycpu_top_cu__DepSet_h5647ed0a__0 \
 	Vmycpu_top_cu__DepSet_h6f40964d__0 \
-	Vmycpu_top_dmem__DepSet_he8e099f3__0 \
-	Vmycpu_top_dmemreq__DepSet_he6fababb__0 \
 	Vmycpu_top_ex2mem__DepSet_hb6b964e4__0 \
+	Vmycpu_top_id2ex__DepSet_hc5ada6c7__0 \
 	Vmycpu_top_id2ex__DepSet_he026cb08__0 \
 	Vmycpu_top_if2id__DepSet_h4d05a6f7__0 \
 	Vmycpu_top_mem2wb__DepSet_h71992377__0 \
-	Vmycpu_top_addr_cal__DepSet_h6707d000__0 \
-	Vmycpu_top_muldiv__DepSet_he3621042__0 \
+	Vmycpu_top_regfile__DepSet_h4ad643e7__0 \
 	Vmycpu_top_regfile__DepSet_h62b127e8__0 \
 	Vmycpu_top_fifo_with_bundle__DepSet_he0813532__0 \
 	Vmycpu_top_fifo_with_bundle__DepSet_hfd023e15__0 \
 	Vmycpu_top_pc_detail__DepSet_h1146336d__0 \
 	Vmycpu_top_branch_prediction_with_blockram__DepSet_h21ccee08__0 \
 	Vmycpu_top_branch_prediction_with_blockram__DepSet_hbbc7934f__0 \
+	Vmycpu_top_bru_detail__DepSet_ha9d3d236__0 \
 	Vmycpu_top_bru_detail__DepSet_h43b49719__0 \
+	Vmycpu_top_icache_tag__DepSet_h6d1354a6__0 \
 	Vmycpu_top_icache_tag__DepSet_h88741ca9__0 \
 	Vmycpu_top_icache_tag__DepSet_h88741ca9__1 \
+	Vmycpu_top_icache_data__DepSet_h25446a87__0 \
 	Vmycpu_top_icache_data__DepSet_h56ee3c43__0 \
+	Vmycpu_top_icache_data__DepSet_hab97f743__0 \
+	Vmycpu_top_dcache_tag__DepSet_h072c023b__0 \
 	Vmycpu_top_dcache_tag__DepSet_h9ea7671c__0 \
-	Vmycpu_top_dcache_data__DepSet_h39c434b5__0 \
+	Vmycpu_top_dcache_data__DepSet_h034a4cf4__0 \
+	Vmycpu_top_dcache_data__DepSet_hd3657a20__0 \
+	Vmycpu_top_dcache_data__DepSet_hce7f39cc__0 \
+	Vmycpu_top_dcache_data__DepSet_hea5dff27__0 \
 	Vmycpu_top_difftest_commit__DepSet_hf87b8e72__0 \
-	Vmycpu_top_difftest_commit__DepSet_h155cf355__0 \
 	Vmycpu_top_mem_trace_module__DepSet_h753eafef__0 \
 	Vmycpu_top_Look_up_table_read_first_with_bundle__DepSet_h8849de43__0 \
 	Vmycpu_top_Look_up_table_read_first_with_bundle__DepSet_h8849de43__1 \
-	Vmycpu_top_Look_up_table_read_first_with_bundle__DepSet_h8849de43__2 \
+	Vmycpu_top_Look_up_table_read_first_with_bundle__DepSet_h7016a540__0 \
+	Vmycpu_top_Look_up_table_read_first_with_bundle__DepSet_h7016a540__1 \
 	Vmycpu_top_PHTS_banks_oneissue_block_ram__DepSet_he281b228__0 \
 	Vmycpu_top_PHTS_banks_oneissue_block_ram__DepSet_h7e63db15__0 \
-	Vmycpu_top_BHT_banks_oneissue__DepSet_h67802f81__0 \
 	Vmycpu_top_BHT_banks_oneissue__DepSet_hda417152__0 \
 	Vmycpu_top_BTB_banks_oneissue_with_block_ram__DepSet_h4fb54aa4__0 \
 	Vmycpu_top_BTB_banks_oneissue_with_block_ram__DepSet_h8aa024f8__0 \
-	Vmycpu_top_data_ram_one_port_with_latency__DepSet_hce53c92e__0 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__0 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__1 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__2 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__3 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__4 \
+	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h8fe6a992__5 \
 	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h3ac77dad__0 \
-	Vmycpu_top_data_ram_one_port__DepSet_h592b7380__0 \
-	Vmycpu_top_data_ram_one_port__DepSet_ha630284f__0 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__0 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__1 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__2 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__3 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__4 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__5 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__6 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__7 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__8 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__9 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__10 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h147cf0a9__11 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h58f9fe77__0 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h087acf43__0 \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_ha55db484__0 \
 	Vmycpu_top_PHTS_with_block_ram__DepSet_h36bdc820__0 \
-	Vmycpu_top_PHTS_with_block_ram__DepSet_h76890239__0 \
+	Vmycpu_top_PHTS_with_block_ram__DepSet_hb64b249b__0 \
+	Vmycpu_top_PHTS_with_block_ram__DepSet_hf5241b6c__0 \
 	Vmycpu_top_BHT__DepSet_h9bd1e8d3__0 \
-	Vmycpu_top_btb_tag_with_block_ram__DepSet_haf394a36__0 \
-	Vmycpu_top_btb_data_with_block_ram__DepSet_h9a4f533c__0 \
+	Vmycpu_top_btb_tag_with_block_ram__DepSet_hb228c3b0__0 \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__0 \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__1 \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__2 \
@@ -131,36 +161,17 @@ VM_CLASSES_FAST += \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__48 \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__49 \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__50 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__51 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__52 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__53 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__54 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__55 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__56 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__57 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__58 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__59 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__60 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__61 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__62 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__63 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__64 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__65 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__66 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__67 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__68 \
-	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__69 \
-	Vmycpu_top_pht_data_with_block_ram__DepSet_h66b22fc8__0 \
-	Vmycpu_top_data_ram_simple_two_ports_32__DepSet_h28b7ea9d__0 \
-	Vmycpu_top_data_ram_simple_two_ports_32__DepSet_h881a87f7__0 \
-	Vmycpu_top_data_ram_simple_two_ports_36__DepSet_h0616a4de__0 \
-	Vmycpu_top_data_ram_simple_two_ports_36__DepSet_hcbb5ba27__0 \
-	Vmycpu_top_data_ram_simple_two_ports__DepSet_h16e1ddd5__0 \
-	Vmycpu_top_data_ram_simple_two_ports__DepSet_he71323cc__0 \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb7403c24__0 \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb7403c24__1 \
+	Vmycpu_top_pht_data_with_block_ram__DepSet_hac671538__0 \
+	Vmycpu_top_data_ram_simple_two_ports_32__DepSet_h0c46c566__0 \
+	Vmycpu_top_data_ram_simple_two_ports_36__DepSet_h629a4429__0 \
+	Vmycpu_top_data_ram_simple_two_ports__DepSet_h59b25ea7__0 \
 	Vmycpu_top_Look_up_table_read_first___05F32__DepSet_h5b53d2ef__0 \
 	Vmycpu_top_Look_up_table_read_first___05F32__DepSet_h5b53d2ef__1 \
 	Vmycpu_top_Look_up_table_read_first___05F32__DepSet_h5b53d2ef__2 \
 	Vmycpu_top_Look_up_table_read_first___05F32__DepSet_h5b53d2ef__3 \
+	Vmycpu_top_Look_up_table_read_first___05F32__DepSet_hf4ccf1c1__0 \
 	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__0 \
 	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__1 \
 	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__2 \
@@ -173,6 +184,9 @@ VM_CLASSES_FAST += \
 VM_CLASSES_SLOW += \
 	Vmycpu_top___024root__Slow \
 	Vmycpu_top___024root__DepSet_h368ace38__0__Slow \
+	Vmycpu_top___024root__DepSet_h368ace38__1__Slow \
+	Vmycpu_top___024root__DepSet_h368ace38__2__Slow \
+	Vmycpu_top___024root__DepSet_h368ace38__3__Slow \
 	Vmycpu_top___024root__DepSet_hcf0db31f__0__Slow \
 	Vmycpu_top_mycpu_top__Slow \
 	Vmycpu_top_mycpu_top__DepSet_heb4658b1__0__Slow \
@@ -234,7 +248,7 @@ VM_CLASSES_SLOW += \
 	Vmycpu_top_dcache_tag__Slow \
 	Vmycpu_top_dcache_tag__DepSet_h9ea7671c__0__Slow \
 	Vmycpu_top_dcache_data__Slow \
-	Vmycpu_top_dcache_data__DepSet_h39c434b5__0__Slow \
+	Vmycpu_top_dcache_data__DepSet_hce7f39cc__0__Slow \
 	Vmycpu_top_dcache_data__DepSet_hea5dff27__0__Slow \
 	Vmycpu_top_difftest_commit__Slow \
 	Vmycpu_top_difftest_commit__DepSet_hf87b8e72__0__Slow \
@@ -255,9 +269,9 @@ VM_CLASSES_SLOW += \
 	Vmycpu_top_data_ram_one_port_with_latency__Slow \
 	Vmycpu_top_data_ram_one_port_with_latency__DepSet_hce53c92e__0__Slow \
 	Vmycpu_top_data_ram_one_port_with_latency__DepSet_h3ac77dad__0__Slow \
-	Vmycpu_top_data_ram_one_port__Slow \
-	Vmycpu_top_data_ram_one_port__DepSet_h592b7380__0__Slow \
-	Vmycpu_top_data_ram_one_port__DepSet_ha630284f__0__Slow \
+	Vmycpu_top_data_ram_one_port_with_latency_16__Slow \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_h58f9fe77__0__Slow \
+	Vmycpu_top_data_ram_one_port_with_latency_16__DepSet_ha55db484__0__Slow \
 	Vmycpu_top_PHTS_with_block_ram__Slow \
 	Vmycpu_top_PHTS_with_block_ram__DepSet_h36bdc820__0__Slow \
 	Vmycpu_top_PHTS_with_block_ram__DepSet_h76890239__0__Slow \
@@ -297,6 +311,11 @@ VM_CLASSES_SLOW += \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__24__Slow \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__25__Slow \
 	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__26__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__27__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__28__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__29__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__30__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F40__DepSet_hb05cc169__31__Slow \
 	Vmycpu_top_pht_data_with_block_ram__Slow \
 	Vmycpu_top_pht_data_with_block_ram__DepSet_h66b22fc8__0__Slow \
 	Vmycpu_top_pht_data_with_block_ram__DepSet_h83135011__0__Slow \
@@ -316,6 +335,7 @@ VM_CLASSES_SLOW += \
 	Vmycpu_top_Look_up_table_read_first___05F36__Slow \
 	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__0__Slow \
 	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__1__Slow \
+	Vmycpu_top_Look_up_table_read_first___05F36__DepSet_hffb82b2c__2__Slow \
 	Vmycpu_top_Look_up_table_read_first___Slow \
 	Vmycpu_top_Look_up_table_read_first___DepSet_h61ded0d4__0__Slow \
 	Vmycpu_top_Look_up_table_read_first___DepSet_h61ded0d4__1__Slow \
@@ -347,7 +367,8 @@ VM_SUPPORT_SLOW += \
 VM_GLOBAL_FAST += \
 	verilated \
 	verilated_dpi \
-	verilated_vcd_c \
+	verilated_fst_c \
+	verilated_threads \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization
 VM_GLOBAL_SLOW += \
